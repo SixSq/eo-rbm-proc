@@ -18,7 +18,7 @@ Steps performed by the processor.
 To produce
 
 ```
-./eo-fm.py \
+./eo-rbm.py \
    --product-path data/S1A_IW_GRDH_1SDV_20180415T163146_20180415T163211_021480_025003_8E79.zip \
    --shape-path data/boundary.shp \
    --result-path ./final_mask
