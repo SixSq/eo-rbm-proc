@@ -117,3 +117,29 @@ the result to the mounted volume.
     --shape-path /data/island_boundary2.shp \
     --result-path /data/final_mask_S1A_IW_GRDH_1SDV_20180415T163146_20180415T163211_021480_025003_8E79
 ```
+
+# Extras
+
+## Building the image for manual exploration
+
+If the goal is to obtain an interface for manual exploration of EO data, while still having the SNAP toolbox available for processing, 
+then you can use Dockerfile.jupyter to build a new Docker image that inherits everything from the one above, 
+plus Jupyter Notebook.
+
+Simply make sure the image from above has already been built, and run:
+
+```
+docker build -f Dockerfile.jupyter . -t sixsq/eo-rbm:jupyter
+```
+
+To launch this image:
+
+```
+# replace /path/to/eodata with the path where your data is within the host
+docker run -it -p 8888:8888 -v /path/to/eodata:/eodata sixsq/eo-rbm:jupyter 
+
+# grab the TOKEN from from output
+```
+
+Then you can access http://localhost:8888/?token=TOKEN and your notebook should be ready. You'll find your data under `/eodata`.
+

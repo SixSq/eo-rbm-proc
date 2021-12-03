@@ -1,0 +1,8 @@
+FROM sixsq/eo-rbm:latest
+
+RUN pip install notebook nuvla-api
+
+COPY jupyter/init.sh /opt/
+ADD https://raw.githubusercontent.com/nuvla/example-jupyter/master/nuvla-integration.py /usr/local/bin/nuvla-integration.py
+
+ENTRYPOINT ["/opt/init.sh"]
